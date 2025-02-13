@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:insert="user_header.html"> </th:block>
+<section>
+      <!--cart section-->
+          <div class="cart">
+               <h2>Cart Products</h2>
+               <div class="added-cart " style=" overflow-x:auto">
+                    
+                        <table >
+                            <th>Product</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Sub Total</th>
+                            <th></th>
+                          
+                             <tr th:each="clist:${clist}">
+                              <!--fetch all details of cart and print-->
+                                <td><img th:src="@{'uploaded_img/'+${clist.image}}" alt=""></td>
+                                <td>[[${clist.name}]]</td>
+                                <td>Rs.[[${clist.price}]]/-</td>
+                                <form action="/updatecart" method="post">
+                                <td><input type="number" name="quantity" th:value="${clist.quantity}" min="1" class="quantity"></td>
+                                <td>Rs. [[${clist.price} * ${clist.quantity}]]/-</td>
+                                <input type="hidden" name="id" th:value="${clist.id}">
+                                <td><input type="submit"  value="update"  class="btn"></td>
+                                <td><a th:href="@{/deletecart/{id}(id=${clist.id})} " onclick="return confirm('Are sure to remove the added cart')" class="cancel">remove</a></td>  
+                                </form>
+                                
+                            </tr>
+                         
+                         
+                         </table>
+
+                        <div class="total-price">
+                          
+                            <!--print grant total price-->
+                               <p style="font-weight:bold; text-align:center; margin-top:12px">Total Price Rs.[[${totalPrice}]]/-</p>
+                          
+                        </div>      
+
+                 </div>
+                     <div class="check-out" style="margin: 20px;">
+                     <!--check out button if the no product added the disabled class disabbled-->
+                          <a href="/checkout" class="order-btn ">Check Out</a>
+                     </div>
+          </div>
+
+
+    </section>
+
+
+<th:block th:insert="user_footer.html"></th:block>
+</body>
+</html>
+    

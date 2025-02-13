@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:insert="admin_header.html"> </th:block>
+
+<section class="order">
+     
+    <h2>Normal User</h2>
+  <div class="order-container users">
+    <table>
+             <tr>
+                <th>User Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+             
+             </tr>
+       
+
+             <tr th:each="ulist:${userlist}">
+               <!--fetch user details and print-->
+                <td>[[${ulist.id}]]</td>
+                <td>[[${ulist.name}]]</td>
+                <td>[[${ulist.email}]]</td>
+                <td>[[${ulist.password}]]</td>
+               
+             </tr>
+
+      
+     </table>    
+  </div>
+     
+</section>
+
+
+
+
+
+
+
+
+
+<th:block th:insert="admin_footer.html"></th:block>
+</body>
+</html>
+
+
+

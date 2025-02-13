@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:insert="admin_header.html"> </th:block>
+
+			 
+<section id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="dashboard">
+                <div class="about-dashboard">
+                     
+                     <!--showing total number of admin-->
+                     <h4>Total Pending Orders</h4>
+                     <p>[[${pendingorder}]]</p>
+                 </div>
+
+                  <div class="about-dashboard">
+
+                  <!-- Showing pending earning-->
+                        <h4>Total pending Earning <h4>
+                        <p> Rs. [[${pendingearning}]]-/</p>
+                  </div>
+                  <div class="about-dashboard">
+                   
+                     <!--showing total number of admin-->
+                     <h4>Total Delivered</h4>
+                     <p>[[${completorder}]]</p>
+                  </div>
+
+                  <div class="about-dashboard">
+
+                  
+                  
+                    <!--showing total order completed aor sells earning-->
+                    <h4>Total Earning <h4>
+                    <p>Rs. [[${totalearning}]]/-</p>
+                 </div>
+                 <div class="about-dashboard">
+                   
+                     <h4>Total Orders</h4>
+                     <p>[[${totalorder}]]</p>
+                 </div>
+                     
+                 <div class="about-dashboard">
+                     
+                     <h4>Total Cancelled Orders</h4>
+                     <p>[[${cancelorder}]]</p>
+                 </div>
+
+                 <div class="about-dashboard">
+                   
+                     <!--showing total number of admin-->
+                     <h4>On The Way</h4>
+                     <p>[[${onthewayorder}]]</p>
+                 </div>
+                 <div class="about-dashboard">
+                  
+                     <!-- showing number of added products-->
+                     <h4>Available Products</h4>
+                     <p>[[${pcount}]]</p>
+                 </div>
+
+
+                 <div class="about-dashboard">
+                     
+                     <h4>Normal Users</h4>
+                     <p>[[${totaluser}]]</p>
+                 </div>
+                 <div class="about-dashboard">
+                  
+                     <!--showing total number of admin-->
+                     <h4>Admin</h4>
+                     <p>[[${totaladmin}]]</p>
+                 </div>
+            </div>
+      </section>
+    
+
+<th:block th:insert="admin_footer.html"></th:block>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<th:block th:insert="admin_header.html"> </th:block>
+ <!--added products-->
+   <section id="products">
+            <h2>Added Products</h2>
+            <div class="products"  >
+                      <div th:each="plist:${pl}">
+                           <div class="product-details">
+                            <!--showing details of product--> 
+                            <img class="image" th:src="@{'uploaded_img/'+${plist.image}}" alt="${plist.image}"/>
+                             <h4>[[${plist.name}]]</h4>
+                             <p>Rs. [[${plist.price}]]</p>
+                             <!--update product button--> 
+                             <a th:href="@{/product/update/{id}(id=${plist.id})}" class="update-btn background"><img src="./assets/icons/updated.png" alt=""> update</a>
+                             <!--delete product button-->
+                             <a th:href="@{/delete/{id}(id=${plist.id})}" calss="canceld-btn background" ><img src="./assets/icons/delete.png" alt=""> delete</a>
+                            </div>
+                            </div>
+            </div>
+    </section>
+   
+<th:block th:insert="admin_footer.html"></th:block>
+</body>
+</html>

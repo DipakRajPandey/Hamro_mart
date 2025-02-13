@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:insert="user_header.html"> </th:block>
+
+<section>
+    <!--payment section -->
+        <div class="payment">
+               <h2>Order Now</h2>
+               <form action="/ordercheckout" method="post">
+                  <div class="payment-details">
+                    <span><img src="./assets/icons/id-card.png" alt=""></span><input type="text" name="name" th:value="${session.name}" readonly placeholder="Enter your name" required class="pay">
+                  </div>
+                  <div class="payment-details">
+                    <span><img src="./assets/icons/email.png" alt=""></span><input type="email" name="email" th:value="${session.email}" readonly placeholder="Enter your email" required class="pay">
+                  </div>
+                  <div class="payment-details">
+                    <span><img src="./assets/icons/home-address.png" alt=""></span><input type="text" name="address" placeholder="Enter your address" required class="pay">
+                  </div>
+                  <div class="payment-details">
+                    <span><img src="./assets/icons/phone-call.png" alt=""></span><input type="text" name="number" placeholder="Enter your phone" required class="pay">
+                  </div>
+                  <div class="payment-details">
+                   <span><img src="./assets/icons/debit-card.png" alt=""></span> 
+                   <select name="method" id="" class="pay" required>
+                        <option value="e-sewa">e-sewa</option>
+                        <option value="cash on delivery">cash on delivery</option>
+                    </select>
+
+                  </div>
+                  <div class="payment-details">
+                    <span><img src="./assets/icons/order-now.png" alt=""></span>
+                    <input type="submit" name="payment" value="order now" class="pay pay-now"></div>
+                    <input type="hidden" name="user" th:value="${session.id}"/>
+               </form>
+        </div>
+    </section>
+
+<th:block th:insert="user_footer.html"></th:block>
+</body>
+</html>
+   

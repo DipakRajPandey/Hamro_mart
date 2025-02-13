@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:insert="user_header.html"> </th:block>
+<!-- ===banner==== -->
+<section>
+   <div class="banner">
+    <img src="./assets/banner/slides.jpg" alt="slide1.jpg">
+   </div>
+</section>
+<!--products section-->
+<section id="products">
+    <h2>Our Products</h2>
+    <div class="products">
+          
+          
+                <!--fetch product details and make the detals as input-->
+                 <div class="product-details" th:each=" plist:${pl}">
+                    <form action="/addcart" method="post" enctype="multipart/form-data">
+                    <img class="image" th:src="@{'uploaded_img/'+${plist.image}}" alt="${plist.image}"/>
+                    <h4>[[${plist.name}]]</h4>
+                     <p>Rs. [[${plist.price}]]</p>
+                    <input type="hidden" name="name" th:value="${plist.name}">
+                    <input type="hidden" name="price" th:value="${plist.price}">
+                    <input type="hidden" name="image" th:value="${plist.image}">
+                    <input type="hidden" name="user" th:value="${session.id}"/>
+                  
+                    <span>Quntity:</span><input type="number" name="quantity" min="1" value="1">
+                      <div class="button">
+                      <input style="width:90px" type="submit" value="add to cart" class="add-to-cart">
+                      </div>
+                    </form>
+                </div>
+            
+    </div>
+       
+</section>
+
+
+<th:block th:insert="user_footer.html"></th:block>
+</body>
+</html>

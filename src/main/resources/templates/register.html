@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <form action="/register" method="post">
+            <div class="title">
+                  <h2>Register <span>Now</span></h2>
+            </div>
+          
+            <div class="form">
+                <span><img src="./assets/icons/name.png" alt=""></span> <input type="text" name="name"
+                    placeholder="Enter your name" class="box" required>
+            </div>
+            <div class="form">
+                <span><img src="./assets/icons/user.png" alt=""></span> <input type="email" name="email"
+                    placeholder="Enter your email" class="box" required>
+            </div>
+            <div class="form">
+                <span><img src="./assets/icons/password.png" alt=""></span> <input type="password" name="password"
+                    placeholder="Enter your password" class="box" required>
+            </div>
+            <div class="form">
+                <span><img src="./assets/icons/password.png" alt=""></span> <input type="password" name="cpassword"
+                    placeholder="Confirm your password" class="box" required>
+            </div>
+          <div class="form">
+             <input type="submit" name="submit" value="register now" class="box btn" >
+        </div>
+          
+        </form>
+         <p>already have an account? <a href="/login">login now</a></p>
+    </div>
+</body>
+
+</html>

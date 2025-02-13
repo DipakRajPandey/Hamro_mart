@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add-products</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <style>
+      .product-container {
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+  <th:block th:insert="admin_header.html"> </th:block>
+    <div class="product-container">
+        <h2 align="center" style="color:purple">Update Product</h2>
+
+      <form action="/updateproduct" method="post" enctype="multipart/form-data" th:Object="${product}">
+             <img class="update-img" th:src= "@{'uploaded_img/' + ${product.image}}" alt="image"/>
+       <div class="form">
+          <span><img src="./assets/icons/name.png" alt=""></span> <input type="text" name="name"
+           placeholder="Enter product name" th:field="*{name}" class="box" required>
+       </div>
+       <div class="form">
+          <span><img src="./assets/icons/get-money.png" alt=""></span> <input type="number" name="price"
+          placeholder="Enter product price" th:field="*{price}" class="box" required min="1">
+       </div>
+       <div class="form">
+          <select name="category" required th:field="*{category}">
+          <option value="" >Select a category</option>
+          <option value="grocery">Grocery</option>
+          <option value="mobile">Mobile</option>
+          <option value="fashion">Fashion</option>
+          
+          </select>
+       </div>
+       <div class="form">
+          <span><img src="./assets/icons/image-files.png" alt=""></span> <input type="file" name="image"
+          accept="image/jpeg, image/png, image/jpg" class="box" th:field="*{image}" required>
+       </div>
+       <div class="form">
+         <input type="submit"  value="update now" class="box btn">
+          <input type="reset" name="reset_product" value="cancel" id="close-update" class="btn" style="background-color:red">
+       </div>
+    <input type="hidden" th:field="*{id}"/>
+
+    </form>
+
+  </div>
+  <th:block th:insert="admin_footer.html"></th:block>
+ </body>
+
+</html>
+
+

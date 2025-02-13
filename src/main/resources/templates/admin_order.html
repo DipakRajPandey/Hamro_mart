@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Orders Placed</title>
+</head>
+<body>
+<th:block th:insert="admin_header.html"> </th:block>
+
+<section class="order">
+    <h2>Orders Placed</h2>
+  <div class="order-container">                
+    <table class="table">
+        <tr>
+            <th>User Id</th>
+            <th>Name</th>
+            <th>Phone No.</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Total Products</th>
+            <th>Total Price</th>
+            <th>Payment Method</th>
+            <th>Payment Status</th>
+            <th>Order Status</th>
+            <th>Order Date</th>
+            <th>Update Payment Status</th>
+            <th>Update Order Status</th>
+            <th></th>
+            <th></th>
+        </tr>
+  
+        <tr th:each="olist : ${order}">
+            <!-- Fetch all details of orders and print -->
+            <td th:text="${olist.user.id}"></td>
+            <td th:text="${olist.name}"></td>
+            <td th:text="${olist.number}"></td>
+            <td th:text="${olist.email}"></td>
+            <td th:text="${olist.address}"></td>
+            <td th:text="${olist.total_products}"></td>
+            <td th:text="${olist.total_price}"></td>
+            <td th:text="${olist.method}"></td>
+            <td th:text="${olist.payment_status}"></td>
+            <td th:text="${olist.order_status}"></td>
+            <td th:text="${olist.date}"></td>
+               
+            <form action="/updateadminorder" method="post">
+                <input type="hidden" name="id" th:value="${olist.id}">
+                
+                <td>
+                    <span><img src="./assets/icons/get-money.png" alt=""></span>
+                    <select name="payment_status">
+                        <option value="pending" th:selected="${olist.payment_status == 'pending'}">pending</option>
+                        <option value="paid" th:selected="${olist.payment_status == 'paid'}">paid</option>
+                    </select>
+                </td>
+                <td>
+                    <span><img src="./assets/icons/delivery.png" alt=""></span>
+                    <select name="order_status">
+                        <option value="pending" th:selected="${olist.order_status == 'pending'}">pending</option>
+                        <option value="on the way" th:selected="${olist.order_status == 'on the way'}">on the way</option>
+                        <option value="delivered" th:selected="${olist.order_status == 'delivered'}">delivered</option>
+                        <option value="cancelled" th:selected="${olist.order_status == 'cancelled'}">cancelled</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="submit" value="update" name="update_order" class="update-btn" style="width: 80px; padding: 10px 12px; background-color:blue; color: white; border: none; text-align: center; border-radius: 5px; cursor: pointer;">
+                </td>
+                <td>  
+                    <!-- Delete button -->
+                    <a  th:href="@{/deleteadminorder/{id}(id=${olist.id})}" class="delete">delete</a>
+                </td>
+            </form>
+        </tr>
+    </table>    
+  </div>
+</section>
+
+<th:block th:insert="admin_footer.html"></th:block>
+
+</body>
+</html>

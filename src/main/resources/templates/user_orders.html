@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:insert="user_header.html"> </th:block>
+<!---order section-->
+<section class="order" width="100%">
+    <h2>Orders Palced</h2>
+  <div class="order-container">
+    <table class="user-order">
+             <tr>
+                <th>Product Name Quantity</th>
+                <th>Total Price</th>
+                <th>Payment Method</th>
+                <th>Order Status</th>
+                <th>Order Date</th>
+               
+             </tr>
+             <tr th:each="ol:${olist}">
+               <!--print  details of orders-->
+				
+                <td>[[${ol.total_products}]]</td>
+                <td>[[${ol.total_price}]]</td>
+                <td>[[${ol.method}]]</td>
+                <td>[[${ol.order_status}]]</td>
+                <td>[[${ol.date}]]</td>
+                <td th:if="${ol.order_status == 'pending'}">
+                <a th:href="@{/cancelorder/{id}(id=${ol.id})}" onclick="return confirm('Are sure to cancel the order')" class="cancel ">cancel</a></td>  
+             </tr>
+
+     </table> 
+     <h2>[[${msg}]]</h2>   
+  </div>
+     
+</section>
+ <th:block th:insert="user_footer.html"></th:block>
+</body>
+</html>
